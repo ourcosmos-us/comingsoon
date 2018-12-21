@@ -1,0 +1,34 @@
+image: node:8.1.2
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+          - pip
+        script: # Modify the commands below to build your repository.
+          - npm install
+          # - npm test
+          - npm run build
+          - apt-get update && apt-get install -y python-dev
+          - curl -O https://bootstrap.pypa.io/get-pip.py
+          - python get-pip.py
+          - pip install awscli --upgrade --ignore-installed six
+          - aws s3 sync ./dist s3://cosmic-particles-comming-soon-dev/
+          - echo "Deploying mms-app to development branch"
+  branches: 
+    master:
+      - step:
+        caches:
+          - node
+          - pip
+        script: # Modify the commands below to build your repository.
+          - npm install
+          # - npm test
+          - npm run build
+          - apt-get update && apt-get install -y python-dev
+          - curl -O https://bootstrap.pypa.io/get-pip.py
+          - python get-pip.py
+          - pip install awscli --upgrade --ignore-installed six
+          - aws s3 sync ./dist s3://cosmic-particles-comming-soon-dev/
+          - echo "Deploying mms-app to development branch"

@@ -6,9 +6,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: -webkit-linear-gradient(-333deg,#030303 10%,#717171 360%);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.bg-light {
+  background-color: #333333;
+}
+
