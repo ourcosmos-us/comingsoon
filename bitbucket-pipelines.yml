@@ -14,6 +14,6 @@ pipelines:
           - curl -O https://bootstrap.pypa.io/get-pip.py
           - python get-pip.py
           - pip install awscli --upgrade --ignore-installed six
-          - aws s3 sync ./dist s3://cosmic-particles-comming-soon-dev/
+          - aws s3 sync ./build s3://cosmic-particles-comming-soon-dev/
           - echo "Deploying mms-app to development branch"
 
