@@ -3,7 +3,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -11,7 +10,11 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+  import './styles.scss';
 
+const styles = {
+  color: '#fff', 
+}
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -29,9 +32,9 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">OUR<span className="cosmo-Logo">COSMOS.US</span></NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
+        <Navbar className="cos-nav" color="" light expand="">
+        {/* <span className="cosmo-logo">OURCOSMOS.US</span> */}
+          <NavbarToggler style={styles} onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
