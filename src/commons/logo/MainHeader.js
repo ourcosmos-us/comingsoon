@@ -1,16 +1,16 @@
 import React from 'react';
-import logo from './svg/v2.svg';
+import message from './svg/v2.svg';;
 
 const main = {
-    width:'72%',
+    width: '72%',
     height: 'auto',
     position: 'absolute',
     bottom: '55px',
 }
 
-const MainHeader = () => (
+const MainHeader = ({ showMessage = false }) => (
     <div style={main}>
-        <img src={logo} alt="coming soon logo" />
+        {showMessage && <img src={message} alt="I send my rockets forth between my ears" />}
     </div>
 )
 

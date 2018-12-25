@@ -4,7 +4,7 @@ import MainHeader from 'commons/logo/MainHeader';
 
 const Layout = () => (
     <div> 
-        {/* <Player /> */}
+        <Player />
         <MainHeader />
     </div>
 );
