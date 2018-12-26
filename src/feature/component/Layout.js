@@ -1,10 +1,10 @@
 import React from 'react';
 import MainHeader from 'commons/logo/MainHeader';
-import Player from './Player';
+// import Player from './Player';
 
 const Layout = () => (
   <div>
-    <Player />
+    {/* <Player /> */}
     <MainHeader />
   </div>
 );

@@ -9,7 +9,7 @@ const main = {
   bottom: '55px',
 };
 
-const MainHeader = ({ showMessage = false }) => (
+const MainHeader = ({ showMessage = true }) => (
   <div style={main}>
     {showMessage && <img src={message} alt="I send my rockets forth between my ears" />}
   </div>
