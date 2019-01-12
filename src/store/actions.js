@@ -1,8 +1,9 @@
-const helloAction = () => (dispatch) => {
+const markFinishedAction = () => (dispatch) => {
   dispatch({
-    type: 'HELLO_WORLD',
-    payload: 'Hi cosmos, my name is redux',
+    type: 'MOVIE_FINISHED',
   });
 };
 
-export default helloAction;
+export default {
+  markFinishedAction,
+};

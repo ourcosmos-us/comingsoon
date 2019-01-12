@@ -1,9 +1,15 @@
-export default (state = {}, action) => {
+const initialState = {
+  isFinished: true,
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case 'HELLO_WORLD':
+    case 'MOVIE_FINISHED':
       return {
-        result: action.payload,
+        ...state,
+        isFinished: true,
       };
+
     default:
       return state;
   }
