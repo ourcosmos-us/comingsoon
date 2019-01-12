@@ -1,17 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'recompose';
 import { connect } from 'react-redux';
+import injectStyles from 'react-jss';
+
 import MainHeader from 'commons/logo/MainHeader';
-import Button from '@material-ui/core/Button';
 import Player from './Player';
 
-const Layout = ({ isFinished }) => (
+const styles = ({ theme }) => ({
+  main: {
+    textAlign: 'center',
+  },
+  callToAction: {
+    ...theme.actionButton,
+  },
+  ...theme,
+});
+
+const Layout = ({ isFinished, classes }) => (
   <div>
     {!isFinished && <Player />}
     <MainHeader />
-    {isFinished && <div className={}>
-      <Button variant="extendedFab">Watch Ray Again</Button>
-      <Button variant="extendedFab">Sign Up</Button>
+    {isFinished && <div className={classes.main}>
+      <button
+        className={classes.callToAction}
+        variant="extendedFab">
+          Watch Ray Again
+      </button>
+      <button
+       variant="extendedFab">
+        Sign Up
+      </button>
       </div>
     }
   </div>
@@ -19,10 +38,14 @@ const Layout = ({ isFinished }) => (
 
 Layout.propTypes = {
   isFinished: PropTypes.bool.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  isFinished: state.featureReducer.isFinished,
-});
-
-export default connect(mapStateToProps)(Layout);
+export default compose(
+  connect(
+    (state) => ({
+      isFinished: state.featureReducer.isFinished,
+    }),
+  ),
+  injectStyles(styles),
+)(Layout)
