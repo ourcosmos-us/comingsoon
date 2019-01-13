@@ -18,9 +18,20 @@ const styles = ({ theme }) => ({
     width: '100%',
     padding: ['0', '55px'],
   },
+  secondary: {
+    ...theme.actionButton, 
+  },
   callToAction: {
     ...theme.callToAction,
     position: 'relative',
+    width: '115px',
+    '&:hover': {
+      transition: ['wdidth', 'padding'],
+      padding: [11, 23, 11, 23],
+      transitionDuration: 2000,
+      width: '100%',
+      padding: 0,
+    }
   },
 });
 
@@ -29,6 +40,7 @@ const Layout = ({ isFinished, classes, loadPlayer}) => (
     {!isFinished && <Player />}
     {isFinished &&
       <button
+        className={classes.secondary}
         variant="extendedFab"
         onClick={loadPlayer}
         >
