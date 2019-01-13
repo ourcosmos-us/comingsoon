@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import injectStyles from 'react-jss';
+import actions from 'store/actions';
 
 import MainHeader from 'commons/logo/MainHeader';
 import Player from './Player';
@@ -17,28 +18,32 @@ const styles = ({ theme }) => ({
   ...theme,
 });
 
-const Layout = ({ isFinished, classes }) => (
+const Layout = ({ isFinished, classes, loadPlayer}) => (
   <div>
     {!isFinished && <Player />}
     <MainHeader />
-    {isFinished && <div className={classes.main}>
+    <div className={classes.main}>
+    {isFinished &&
       <button
         className={classes.callToAction}
-        variant="extendedFab">
+        variant="extendedFab"
+        onClick={loadPlayer}
+        >
           Watch Ray Again
       </button>
-      <button
-       variant="extendedFab">
+    }
+    <button
+      variant="extendedFab">
         Sign Up
       </button>
-      </div>
-    }
+    </div>
   </div>
 );
 
 Layout.propTypes = {
   isFinished: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
+  loadPlayer: PropTypes.func.isRequired,
 };
 
 export default compose(
@@ -46,6 +51,9 @@ export default compose(
     (state) => ({
       isFinished: state.featureReducer.isFinished,
     }),
+    (dispatch) => ({
+      loadPlayer: () => dispatch(actions.watchAgainAction()),
+    }),
   ),
   injectStyles(styles),
-)(Layout)
+)(Layout);

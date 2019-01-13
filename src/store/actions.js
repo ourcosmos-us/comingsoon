@@ -4,6 +4,20 @@ const markFinishedAction = () => (dispatch) => {
   });
 };
 
+const watchAgainAction = () => (dispatch) => {
+  dispatch({
+    type: 'MOVIE_RESTART',
+  });
+};
+
+const movieLoadedAction = () => (dispatch) => {
+  dispatch({
+    type: 'MOVIE_LOADED',
+  });
+};
+
 export default {
   markFinishedAction,
+  watchAgainAction,
+  movieLoadedAction,
 };
