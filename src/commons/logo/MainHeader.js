@@ -7,9 +7,7 @@ const styles = {
   main: {
     width: '72%',
     height: 'auto',
-    position: 'absolute',
-    bottom: '55px',
-    left: '23px'
+    position: 'relative',
   }
 }
 

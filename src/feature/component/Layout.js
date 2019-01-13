@@ -12,31 +12,38 @@ const styles = ({ theme }) => ({
   main: {
     textAlign: 'center',
   },
-  callToAction: {
-    ...theme.actionButton,
+  bottom: {
+    position: 'absolute',
+    bottom: "55px",
+    width: '100%',
+    padding: ['0', '55px'],
   },
-  ...theme,
+  callToAction: {
+    ...theme.callToAction,
+    position: 'relative',
+  },
 });
 
 const Layout = ({ isFinished, classes, loadPlayer}) => (
-  <div>
+  <div className={classes.main}>
     {!isFinished && <Player />}
-    <MainHeader />
-    <div className={classes.main}>
     {isFinished &&
       <button
-        className={classes.callToAction}
         variant="extendedFab"
         onClick={loadPlayer}
         >
           Watch Ray Again
       </button>
     }
+    <div className={classes.bottom}>
+    <MainHeader />
     <button
+      className={classes.callToAction}
       variant="extendedFab">
-        Sign Up
+      JOIN US
       </button>
     </div>
+    
   </div>
 );
 

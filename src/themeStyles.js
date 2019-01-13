@@ -12,7 +12,13 @@ const theme = {
       color: '#5a28be',
     },
     callToAction: {
-      backgroundColor: '#FF5C5C',
+      color: '#ffffff',
+      padding: '11px 23px 11px 23px',
+      border: {
+        radius: '29px',
+      },
+      borderColor: 'rgba(223, 31, 45, 1)',
+      backgroundColor: '#990A25',
     },
     cosmicRed: {
       backgroundColor: 'rgba(153, 10, 37, 1)', 
@@ -23,7 +29,7 @@ const theme = {
         color: '#2B3784',
     },
     primaryBlue: {
-        backgroundColor: 'rgba(43, 55, 132, 1)',
+      backgroundColor: 'rgba(43, 55, 132, 1)',
       color: '#2B3784',
     },
   };
