@@ -1,6 +1,7 @@
 const initialState = {
   isFinished: false,
   movieLoaded: false,
+  auth0Pending: false,
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +21,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         movieLoaded: true,
+      }
+    case 'AUTH0_TRIGGER':
+      return {
+        ...state,
+        auth0Pending: true,
       }
     default:
       return state;

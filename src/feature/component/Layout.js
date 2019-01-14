@@ -4,34 +4,15 @@ import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import injectStyles from 'react-jss';
 import actions from 'store/actions';
-
-import MainHeader from 'commons/logo/MainHeader';
 import Player from './Player';
+import JoinUs from './JoinUs';
 
 const styles = ({ theme }) => ({
   main: {
     textAlign: 'center',
   },
-  bottom: {
-    position: 'absolute',
-    bottom: "55px",
-    width: '100%',
-    padding: ['0', '55px'],
-  },
   secondary: {
     ...theme.actionButton, 
-  },
-  callToAction: {
-    ...theme.callToAction,
-    position: 'relative',
-    width: '115px',
-    '&:hover': {
-      transition: ['wdidth', 'padding'],
-      padding: [11, 23, 11, 23],
-      transitionDuration: 2000,
-      width: '100%',
-      padding: 0,
-    }
   },
 });
 
@@ -47,15 +28,7 @@ const Layout = ({ isFinished, classes, loadPlayer}) => (
           Watch Ray Again
       </button>
     }
-    <div className={classes.bottom}>
-    <MainHeader />
-    <button
-      className={classes.callToAction}
-      variant="extendedFab">
-      JOIN US
-      </button>
-    </div>
-    
+   <JoinUs/>
   </div>
 );
 
