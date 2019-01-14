@@ -1,28 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'recompose';
 import { connect } from 'react-redux';
-import MainHeader from 'commons/logo/MainHeader';
-import Button from '@material-ui/core/Button';
+import injectStyles from 'react-jss';
+import actions from 'store/actions';
 import Player from './Player';
+import JoinUs from './JoinUs';
 
-const Layout = ({ isFinished }) => (
-  <div>
+const styles = ({ theme }) => ({
+  main: {
+    textAlign: 'center',
+  },
+  secondary: {
+    ...theme.actionButton, 
+  },
+});
+
+const Layout = ({ isFinished, classes, loadPlayer}) => (
+  <div className={classes.main}>
     {!isFinished && <Player />}
-    <MainHeader />
-    {isFinished && <div className={}>
-      <Button variant="extendedFab">Watch Ray Again</Button>
-      <Button variant="extendedFab">Sign Up</Button>
-      </div>
+    {isFinished &&
+      <button
+        className={classes.secondary}
+        variant="extendedFab"
+        onClick={loadPlayer}
+        >
+          Watch Ray Again
+      </button>
     }
+   <JoinUs/>
   </div>
 );
 
 Layout.propTypes = {
   isFinished: PropTypes.bool.isRequired,
+  classes: PropTypes.object.isRequired,
+  loadPlayer: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  isFinished: state.featureReducer.isFinished,
-});
-
-export default connect(mapStateToProps)(Layout);
+export default compose(
+  connect(
+    (state) => ({
+      isFinished: state.featureReducer.isFinished,
+    }),
+    (dispatch) => ({
+      loadPlayer: () => dispatch(actions.watchAgainAction()),
+    }),
+  ),
+  injectStyles(styles),
+)(Layout);

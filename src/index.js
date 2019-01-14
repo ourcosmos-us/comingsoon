@@ -3,15 +3,23 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';
+import { ThemeProvider } from 'react-jss';
+import theme from './themeStyles';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles.scss';
 
 import * as serviceWorker from './serviceWorker';
 
+const styles = () => ({
+  theme,
+});
 
 ReactDOM.render(
   <Provider store={store()}>
-    <App />
+    <ThemeProvider theme={styles}>
+      <App />
+    </ThemeProvider>
   </Provider>, document.getElementById('root'),
 );
 
